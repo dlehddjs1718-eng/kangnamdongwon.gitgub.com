@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeloVoice | Premium Karaoke Agency</title>
+    <meta name="description" content="MeloVoice provides top-tier karaoke entertainment services for parties, events, and corporate functions. Professional singers, state-of-the-art equipment, and unforgettable experiences.">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff2e63;
+            --secondary: #252a34;
+            --accent: #08d9d6;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --gradient: linear-gradient(135deg, #ff2e63 0%, #ff9a3c 100%);
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            overflow-x: hidden;
+            background-color: #fafafa;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .btn {
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 46, 99, 0.2);
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-outline-primary:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Header Styles */
+        header {
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: white;
+        }
+        
+        .navbar-brand {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 28px;
+            color: var(--primary) !important;
+        }
+        
+        .navbar-brand span {
+            color: var(--secondary);
+        }
+        
+        .nav-link {
+            font-weight: 600;
+            margin: 0 10px;
+            position: relative;
+            color: var(--dark) !important;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary) !important;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 70%;
+        }
+        
+        /* Hero Section */
+        #hero {
+            background: var(--gradient);
+            padding: 180px 0 100px;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+            max-width: 650px;
+            opacity: 0.9;
+        }
+        
+        .hero-stats {
+            display: flex;
+            margin-top: 40px;
+        }
+        
+        .stat-item {
+            margin-right: 40px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .stat-text {
+            font-weight: 500;
+            opacity: 0.8;
+        }
+        
+        .hero-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            margin-top: 30px;
+        }
+        
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: var(--accent);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.2;
+        }
+        
+        /* Services Section */
+        #services {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 650px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            height: 100%;
+            border: none;
+            border-top: 4px solid var(--primary);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 46, 99, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: var(--primary);
+            font-size: 32px;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        .service-card p {
+            color: var(--gray);
+            margin-bottom: 25px;
+        }
+        
+        /* Singers Section */
+        #singers {
+            background-color: var(--light);
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .singer-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+        
+        .singer-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .singer-img {
+            height: 280px;
+            overflow: hidden;
+        }
+        
+        .singer-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .singer-card:hover .singer-img img {
+            transform: scale(1.1);
+        }
+        
+        .singer-info {
+            padding: 25px;
+        }
+        
+        .singer-info h3 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+        
+        .singer-genre {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .singer-rating {
+            color: #ffc107;
+            margin-bottom: 15px;
+        }
+        
+        /* Packages Section */
+        #packages {
+            padding: 100px 0;
+            position: relative;
+            background: linear-gradient(135deg, rgba(255, 46, 99, 0.03) 0%, rgba(255, 154, 60, 0.03) 100%);
+        }
+        
+        .package-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+        
+        .package-card:hover, .package-card.popular {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .package-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 20px 0;
+        }
+        
+        .package-price span {
+            font-size: 1rem;
+            color: var(--gray);
+            font-weight: 400;
+        }
+        
+        .package-features {
+            list-style: none;
+            padding: 0;
+            margin: 25px 0;
+            text-align: left;
+        }
+        
+        .package-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+        }
+        
+        .package-features li i {
+            color: var(--primary);
+            margin-right: 10px;
+        }
+        
+        .package-features li:last-child {
+            border-bottom: none;
+        }
+        
+        /* CTA Section */
+        #cta {
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        #cta h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        #cta p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+        
+        .cta-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 70px 0 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #495057;
+            color: #adb5bd;
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-stats {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .stat-item {
+                margin: 0 20px 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            #cta h2 {
+                font-size: 2.2rem;
+            }
+            
+            .cta-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .package-card.popular .popular-badge {
+                transform: rotate(0);
+                top: 15px;
+                right: 15px;
+                width: 120px;
+                padding: 5px 0;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .package-price {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">Melo<span>Voice</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#singers">Singers</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#packages">Packages</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#cta">Book Now</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="pt-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="hero-title">Professional Karaoke Entertainment for Every Occasion</h1>
+                    <p class="hero-subtitle">Transform your event with our premium karaoke services featuring talented singers, state-of-the-art equipment, and unforgettable performances.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#cta" class="btn btn-primary">Book Now</a>
+                        <a href="#packages" class="btn btn-outline-primary">View Packages</a>
+                    </div>
+                    <div class="hero-stats mt-4">
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-text">Professional Singers</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">1000+</div>
+                            <div class="stat-text">Events Hosted</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">5.0</div>
+                            <div class="stat-text">Avg. Rating</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-5 mt-lg-0">
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Karaoke Performance" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Karaoke Services</h2>
+                <p>We offer a variety of professional karaoke entertainment solutions for any event type.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card h-100">
+                        <div class="service-icon">
+                            <i class="fas fa-microphone-alt"></i>
+                        </div>
+                        <h3>Private Parties</h3>
+                        <p>Birthday celebrations, anniversaries, or just a fun night with friends - we bring the entertainment to you.</p>
+                        <a href="#cta" class="btn btn-outline-primary">Book Now</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card h-100">
+                        <div class="service-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3>Corporate Events</h3>
+                        <p>Team building, holiday parties, or company celebrations with professional karaoke entertainment.</p>
+                        <a href="#cta" class="btn btn-outline-primary">Book Now</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card h-100">
+                        <div class="service-icon">
+                            <i class="fas fa-ring"></i>
+                        </div>
+                        <h3>Weddings</h3>
+                        <p>Add a unique entertainment element to your special day with our wedding karaoke service.</p>
+                        <a href="#cta" class="btn btn-outline-primary">Book Now</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card h-100">
+                        <div class="service-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>College Events</h3>
+                        <p>Fraternity parties, campus festivals, or graduation celebrations with professional karaoke.</p>
+                        <a href="#cta" class="btn btn-outline-primary">Book Now</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card h-100">
+                        <div class="service-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h3>Karaoke Equipment Rental</h3>
+                        <p>State-of-the-art sound systems, microphones, and lighting for your DIY karaoke setup.</p>
+                        <a href="#cta" class="btn btn-outline-primary">Book Now</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card h-100">
+                        <div class="service-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Group Karaoke Sessions</h3>
+                        <p>Themed group karaoke nights with professional hosts for clubs, bars, and community centers.</p>
+                        <a href="#cta" class="btn btn-outline-primary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Singers Section -->
+    <section id="singers">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet Our Talent</h2>
+                <p>Our professional singers bring energy, charisma, and exceptional vocal talent to every performance.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="singer-card">
+                        <div class="singer-img">
+                            <img src="https://images.unsplash.com/photo-1507838153414-b4b713384a76?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Singer">
+                        </div>
+                        <div class="singer-info">
+                            <h3>Sarah Johnson</h3>
+                            <span class="singer-genre">Pop & R&B</span>
+                            <div class="singer-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>10+ years experience with powerful vocals and engaging stage presence.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="singer-card">
+                        <div class="singer-img">
+                            <img src="https://images.unsplash.com/photo-1514041775455-9b0a68c2b885?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Singer">
+                        </div>
+                        <div class="singer-info">
+                            <h3>Michael Chen</h3>
+                            <span class="singer-genre">Rock & Classic</span>
+                            <div class="singer-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <p>Versatile performer with dynamic range and crowd interaction skills.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="singer-card">
+                        <div class="singer-img">
+                            <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80" alt="Singer">
+                        </div>
+                        <div class="singer-info">
+                            <h3>Emma Rodriguez</h3>
+                            <span class="singer-genre">Jazz & Soul</span>
+                            <div class="singer-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>Smooth vocals with decades of experience in jazz and soul genres.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="singer-card">
+                        <div class="singer-img">
+                            <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80" alt="Singer">
+                        </div>
+                        <div class="singer-info">
+                            <h3>David Kim</h3>
+                            <span class="singer-genre">K-Pop & International</span>
+                            <div class="singer-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>Multilingual performer specializing in K-Pop and international hits.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section id="packages">
+        <div class="container">
+            <div class="section-title">
+                <h2>Event Packages</h2>
+                <p>Choose the perfect package for your event with flexible options and professional service.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="package-card">
+                        <h3>Basic Package</h3>
+                        <p>Perfect for small gatherings</p>
+                        <div class="package-price">$299<span>/event</span></div>
+                        <ul class="package-features">
+                            <li><i class="fas fa-check"></i> 2-hour performance</li>
+                            <li><i class="fas fa-check"></i> Professional singer</li>
+                            <li><i class="fas fa-check"></i> Basic sound system</li>
+                            <li><i class="fas fa-check"></i> Song selection from 500+ tracks</li>
+                            <li><i class="fas fa-check"></i> 10 song requests</li>
+                        </ul>
+                        <a href="#cta" class="btn btn-outline-primary">Book Now</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="package-card popular">
+                        <div class="popular-badge">MOST POPULAR</div>
+                        <h3>Standard Package</h3>
+                        <p>Ideal for medium-sized events</p>
+                        <div class="package-price">$499<span>/event</span></div>
+                        <ul class="package-features">
+                            <li><i class="fas fa-check"></i> 3-hour performance</li>
+                            <li><i class="fas fa-check"></i> 2 professional singers</li>
+                            <li><i class="fas fa-check"></i> Premium sound system</li>
+                            <li><i class="fas fa-check"></i> Song selection from 1000+ tracks</li>
+                            <li><i class="fas fa-check"></i> Unlimited song requests</li>
+                            <li><i class="fas fa-check"></i> Basic lighting setup</li>
+                            <li><i class="fas fa-check"></i> Dedicated event coordinator</li>
+                        </ul>
+                        <a href="#cta" class="btn btn-primary">Book Now</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="package-card">
+                        <h3>Premium Package</h3>
+                        <p>Ultimate karaoke experience</p>
+                        <div class="package-price">$799<span>/event</span></div>
+                        <ul class="package-features">
+                            <li><i class="fas fa-check"></i> 4-hour performance</li>
+                            <li><i class="fas fa-check"></i> 3 professional singers</li>
+                            <li><i class="fas fa-check"></i> Concert-grade sound system</li>
+                            <li><i class="fas fa-check"></i> Unlimited song library</li>
+                            <li><i class="fas fa-check"></i> Custom song arrangements</li>
+                            <li><i class="fas fa-check"></i> Professional lighting & effects</li>
+                            <li><i class="fas fa-check"></i> Dedicated event coordinator</li>
+                            <li><i class="fas fa-check"></i> Video recording of performance</li>
+                        </ul>
+                        <a href="#cta" class="btn btn-outline-primary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Sing Your Heart Out?</h2>
+                <p>Book your professional karaoke experience today and create unforgettable memories at your event!</p>
+                <div class="cta-btns">
+                    <a href="tel:+1234567890" class="btn btn-primary">Call Now: (123) 456-7890</a>
+                    <a href="mailto:info@melovoice.com" class="btn btn-outline-primary">Email Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <h3>MeloVoice</h3>
+                    <p class="mt-4">Premier karaoke agency providing professional entertainment services for all types of events since 2015.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Private Parties</a></li>
+                        <li><a href="#">Corporate Events</a></li>
+                        <li><a href="#">Weddings</a></li>
+                        <li><a href="#">College Events</a></li>
+                        <li><a href="#">Equipment Rental</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Singers</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> 123 Music Street, Entertainment City</li>
+                        <li><i class="fas fa-phone me-2"></i> (123) 456-7890</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@melovoice.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 MeloVoice. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
